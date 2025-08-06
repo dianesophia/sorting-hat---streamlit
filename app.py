@@ -5,41 +5,52 @@ import numpy as np
 # Load model
 model = joblib.load('house_predictor_model.pkl')
 
-# Page config
+# Page configuration
 st.set_page_config(page_title="Hogwarts House Predictor", page_icon="🧙‍♂️", layout="centered")
 
-# Apply custom style
+# Custom CSS styling
 st.markdown("""
     <style>
         body {
             background-color: #f0f2f6;
         }
         .main {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #6A1B9A;
-            text-align: center;
-            font-family: 'Georgia';
+        h1, h2, h4 {
+            font-family: 'Georgia', serif;
+            color: #4b0082;
         }
-        .stButton button {
+        .stButton>button {
             background-color: #6A1B9A;
             color: white;
             font-weight: bold;
             border-radius: 10px;
             padding: 0.5em 1.5em;
+            transition: background-color 0.3s;
+        }
+        .stButton>button:hover {
+            background-color: #4b0082;
+        }
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: gray;
+            font-size: 0.8rem;
         }
     </style>
 """, unsafe_allow_html=True)
 
+# Main container
 st.markdown("<div class='main'>", unsafe_allow_html=True)
+
 st.title("🧙‍♀️ Hogwarts House Predictor")
 st.markdown("#### Enter your traits and discover your magical destiny!")
 
-# Input sliders
+# Sliders
 bravery = st.slider("🦁 Bravery", 1, 10, 5)
 intelligence = st.slider("🦅 Intelligence", 1, 10, 5)
 loyalty = st.slider("🦡 Loyalty", 1, 10, 5)
@@ -63,7 +74,8 @@ if st.button("✨ Predict My House"):
         </div>
     """, unsafe_allow_html=True)
 
-    # Optional: Show house banner
-    # st.image(f"{prediction.lower()}.png", width=300)  # Make sure image file is present
-
+# End main container
 st.markdown("</div>", unsafe_allow_html=True)
+
+# Footer
+st.markdown("<footer>© 2025 All rights reserved by Diane Sophia. This app is inspired by the Harry Potter universe.</footer>", unsafe_allow_html=True)
